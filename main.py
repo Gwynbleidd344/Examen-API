@@ -1,4 +1,7 @@
+from urllib import request
+
 from fastapi import FastAPI
+from starlette.responses import Response
 
 app = FastAPI()
 
@@ -8,6 +11,8 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+@app.get("/hello")
+def hello_page():
+    with open("Hello.html","r",encoding="utf-8") as file:
+        html_content = file.read()
+    return Response(content=html_content, status_code=200, media_type="text/html")
