@@ -18,4 +18,7 @@ def pong():
 
 @app.get("/home")
 def home():
-    return Response("home",status_code=200)
+    with open("welcome.html", "r",encoding="utf-8") as file:
+        html_content = file.read()
+    return Response(content=html_content, status_code=200 ,media_type="text/html")
+
