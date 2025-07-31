@@ -3,6 +3,7 @@ from typing import List
 
 from fastapi import FastAPI
 from pydantic import BaseModel
+from starlette.requests import Request
 from starlette.responses import Response, JSONResponse
 
 app = FastAPI()
@@ -28,7 +29,15 @@ async def root():
 
 @app.get("/ping")
 def pong():
-    return Response("pong",status_code=200)
+    return (Response("pong",status_code=200))
+
+@app.get("/ping/auth")
+def pong_auth(request: Request):
+    auth = request.headers.get("Authorization")
+    if auth != "Basic YWRtaW46MTIzNDU2Nw==":
+        return (Response("unauthorized",status_code=401))
+    else:
+        return (Response("pong",status_code=200))
 
 
 @app.get("/home")
