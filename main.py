@@ -37,6 +37,10 @@ def home():
         html_content = welcome.read()
     return Response(content=html_content, status_code=200 ,media_type="text/html")
 
+@app.get("/posts")
+def get_posts():
+    return JSONResponse(content={"posts":serialized_posts_list()}, status_code=200)
+
 @app.post("/posts")
 def add_posts(new_post: List[PostModel]):
     posts_list.extend(new_post)
