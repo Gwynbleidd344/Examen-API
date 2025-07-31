@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Cython cache
+.pytest_cache/
+cython_debug/
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Local environment variables
+.env
+.env.*
+
+# Uvicorn / FastAPI logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# MyPy / Pyright / Pylint
+.mypy_cache/
+.pyright/
+.pyre/
+.pytype/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# pytest coverage
+htmlcov/
+.coverage
+coverage.xml
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# SQLite and other DBs
+*.db
+*.sqlite3
+
+# __pypackages__ from PEP 582
+__pypackages__/
+
+.gitignore
