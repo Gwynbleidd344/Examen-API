@@ -46,6 +46,16 @@ def add_posts(new_post: List[PostModel]):
     posts_list.extend(new_post)
     return JSONResponse(content={"posts":serialized_posts_list()}, status_code=201)
 
+@app.put("/posts")
+def update_posts(incoming_info: List[PostModel]):
+    for incoming in incoming_info:
+        for post in posts_list:
+            if post.title == incoming.title:
+                post.title = incoming.title
+                post.author = incoming.author
+                post.content = incoming.content
+                post.creation_datetime = incoming.creation_datetime
+    return JSONResponse(content={"posts":serialized_posts_list()}, status_code=200)
 
 @app.get("/{invalid_path}")
 def invalid_path(invalid_path:str):
